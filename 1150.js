@@ -15,17 +15,10 @@ const numeros = lines.map((num) => parseInt(num));
 const main = () => {
   const x = numeros.shift();
   let resultado = x;
-  let z = 0;
-  for (var i = 0; i < numeros.length; i++) {
-    if (x < numeros[i]) {
-      z = numeros[i];
-      break;
-    }
-  }
+  let z = numeros.find((num) => num > x);
   let contagem = 0;
-  while (resultado <= z) {
+  for (contagem; resultado <= z; contagem++) {
     resultado += x + 1;
-    contagem++;
   }
   console.log(contagem);
 };
