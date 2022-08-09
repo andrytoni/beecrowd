@@ -1,41 +1,46 @@
-let lines = ["6 10 8 9"];
-let i = lines.shift().split(' ').map(function(x){
-    return parseInt(x);
-});
-let h = 24;
-let m = 60;
-let [hi,mi,hf,mf] = i;
-m = m-mi+mf;
-console.log(`m=${m}`);
+// Ler o tempo de começo e de fim do jogo
+// (Hora inicial, minuto inicial, hora final, minuto final)
+// Jogo pode durar no mínimo 1 minuto e no máximo 24 horas
+// Imprimir a duração do jogo
 
-if(hf>hi){
-    h=(hf-hi)*60;
-    console.log(`h=${h}`);    
-} else if(hi>hf){
-    h=(h-hi+hf)*60;
-    console.log(`h=${h}`);    
-}else if(hi==hf && mi==mf){
-    m=0;
-    console.log(`O JOGO DUROU ${h} HORA(S) E ${m} MINUTO(S)`);
-}
+const input = require('fs').readFileSync('./dev/stdin', 'utf8');
+const lines = input.split(' ');
 
-let x=(m+h);
-console.log(`x=${x}`);
-console.log(x/60);
+const main = () => {
+  let [horaIni, minutoIni, horaFim, minutoFim] = lines.map((num) =>
+    parseInt(num)
+  );
+  let horas = 0;
+  let minutos = 0;
+  if (horaIni < horaFim) {
+    horas = horaFim - horaIni;
+    if (minutoIni < minutoFim) {
+      minutos = minutoFim - minutoIni;
+    } else if (minutoIni > minutoFim) {
+      horas -= 1;
+      minutos = 60 - minutoIni + minutoFim;
+    }
+  }
+  if (horaIni > horaFim) {
+    horas = 24 - horaIni + horaFim;
+    if (minutoIni < minutoFim) {
+      minutos = minutoFim - minutoIni;
+    } else if (minutoIni > minutoFim) {
+      horas -= 1;
+      minutos = 60 - minutoIni + minutoFim;
+    }
+  }
+  if (horaIni == horaFim) {
+    if (minutoIni < minutoFim) {
+      minutos = minutoFim - minutoIni;
+    } else if (minutoIni > minutoFim) {
+      horas = 23;
+      minutos = 60 - minutoIni + minutoFim;
+    } else if (minutoIni == minutoFim) {
+      horas = 24;
+    }
+  }
+  console.log(`O JOGO DUROU ${horas} HORA(S) E ${minutos} MINUTO(S)`);
+};
 
-let r=0;
-if(x/60>24){
-    r=x%60;
-    console.log(`r=${r}`);
-    h=(h/60);
-}else if(x/60<24){
-    r=x%60;
-    console.log(`r=${r}`);
-    h=(h/60);
-}else if(x%60==0){
-    h = 24;
-    m=0;
-}
-console.log(`O JOGO DUROU ${h} HORA(S) E ${r} MINUTO(S)`);
-
-
+main();
