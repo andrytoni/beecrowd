@@ -14,12 +14,13 @@ const main = () => {
   for (let i = 0; i < lines.length; i++) {
     if (lines[i] > 10 || lines[i] < 0) {
       console.log(`nota invalida`);
+      continue;
     } else {
       notas.push(lines[i]);
     }
     if (notas.length == 2) {
       console.log(`media = ${((notas[0] + notas[1]) / 2).toFixed(2)}`);
-      notas = [];
+      break;
     }
   }
 };
