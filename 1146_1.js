@@ -15,7 +15,9 @@ const main = () => {
           output += j + ' ';
         }
       }
-      console.log(output);
+      if (output.length > 0) {
+        console.log(output);
+      }
     }
   }
 };
