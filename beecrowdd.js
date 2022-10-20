@@ -25,6 +25,6 @@
 // vetor = new Array(cont);
 // vetor[1] = 2;
 // console.log(vetor);
-let matriz = new Array(4);
-matriz[0] = new Array(4);
-console.log(matriz);
+let matriz = [1, 2, 3, 4];
+let aux = [...matriz];
+console.log(aux);
