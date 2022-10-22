@@ -25,6 +25,11 @@
 // vetor = new Array(cont);
 // vetor[1] = 2;
 // console.log(vetor);
-let matriz = [1, 2, 3, 4];
-let aux = [...matriz];
-console.log(aux);
+// let matriz = [1, 2, 3, 4];
+// let aux = [...matriz];
+// console.log(aux);
+
+// let number = (3 / 2).toFixed(0);
+// console.log(number);
+
+console.log(Math.abs(0 - 0 - 1));
