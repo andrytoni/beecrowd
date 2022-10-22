@@ -32,4 +32,16 @@
 // let number = (3 / 2).toFixed(0);
 // console.log(number);
 
-console.log(Math.abs(0 - 0 - 1));
+const createLine = (order, firstValue) => {
+  let line = [];
+  let value = firstValue;
+  for (let i = 0; i < order; i++) {
+    line.push(value);
+
+    value *= 2;
+  }
+  line = line.join(' ');
+
+  return line;
+};
+console.log(createLine(3, 2));

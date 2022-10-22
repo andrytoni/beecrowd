@@ -1,8 +1,8 @@
 const input = require('fs').readFileSync('./dev/stdin', 'utf8');
-const order = input.split('\n').map((item) => Number(item));
+const order = input.split('\n').map((item) => parseInt(item));
 
 const main = () => {
-  for (let i = 0; i < order.length; i++) {
+  for (let i = 0; !isNaN(order[i]); i++) {
     console.log(createMatrix(order[i]));
   }
 };
