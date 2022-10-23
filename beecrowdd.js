@@ -32,16 +32,25 @@
 // let number = (3 / 2).toFixed(0);
 // console.log(number);
 
-const createLine = (order, firstValue) => {
-  let line = [];
-  let value = firstValue;
-  for (let i = 0; i < order; i++) {
-    line.push(value);
-
-    value *= 2;
+const fun = (matriz) => {
+  for (let i = 0; i < matriz.length; i++) {
+    for (let j = 0; j < matriz.length; j++) {
+      matriz[i][j] += 1;
+    }
   }
-  line = line.join(' ');
-
-  return line;
+  return matriz;
 };
-console.log(createLine(3, 2));
+
+// const { one, two } = fun();
+
+// const str = '5';
+// console.log(str.padStart(4, ' '));
+
+let matriz = [
+  [1, 2],
+  [3, 4],
+];
+
+matriz = fun(matriz);
+
+console.log(matriz);
