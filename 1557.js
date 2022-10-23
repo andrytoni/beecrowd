@@ -10,40 +10,31 @@ const main = () => {
 
 const createMatrix = (order) => {
   let matrix = [];
-  let finalSize = 0;
+  let valueSize = `${Math.pow(2, (order - 1) * 2)}`;
+  valueSize = valueSize.length;
+
   for (let i = 1; i <= Math.pow(2, order - 1); i *= 2) {
-    let { line, size } = createLine(order, i);
+    let line = createLine(order, i, valueSize);
     matrix.push(line);
-    finalSize = size;
-  }
-  matrix = formatLine(matrix, finalSize);
-
-  return matrix;
-};
-
-const createLine = (order, firstValue) => {
-  let line = [];
-  let value = firstValue;
-  let size = 0;
-  for (let i = 0; i < order; i++) {
-    line.push(`${value}`);
-    if (value > size) size = line[i].length;
-    value *= 2;
-  }
-
-  return { line, size };
-};
-
-const formatLine = (matrix, size) => {
-  for (let i = 0; i < matrix.length; i++) {
-    for (let j = 0; j < matrix.length; j++) {
-      matrix[i][j] = matrix[i][j].padStart(size, ' ');
-    }
-    matrix[i] = matrix[i].join(' ');
   }
   matrix = matrix.join('\n');
 
   return matrix;
+};
+
+const createLine = (order, firstValue, valueSize) => {
+  let line = [];
+  let value = firstValue;
+
+  for (let i = 0; i < order; i++) {
+    line.push(`${value}`);
+    line[i] = line[i].padStart(valueSize, ' ');
+    value *= 2;
+  }
+
+  line = line.join(' ');
+
+  return line;
 };
 
 main();
