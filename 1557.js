@@ -17,6 +17,7 @@ const createMatrix = (order) => {
     let line = createLine(order, i, valueSize);
     matrix.push(line);
   }
+
   matrix = matrix.join('\n');
 
   return matrix;
