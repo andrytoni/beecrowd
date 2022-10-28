@@ -1,12 +1,15 @@
 const input = require('fs').readFileSync('./dev/stdin', 'utf8');
-const lines = input.split('\n').map((item) => item.split(' '));
+const lines = input.split('\n');
 
 const main = () => {
-  for (let i = 0; i < lines.length; i += 2) {
-    const cases = Number(lines[i]);
-    const slugs = lines[i + 1].map((item) => Number(item));
-    console.log(slugs);
+  let cases = Number(lines.shift());
+  let slugs = lines
+    .shift()
+    .split(' ')
+    .slice(0, cases)
+    .map((item) => Number(item));
 
+  while (typeof lines[0] === 'string') {
     const fasterSlug = Math.max(...slugs);
     let level = 0;
 
@@ -18,6 +21,15 @@ const main = () => {
       level = 3;
     }
     console.log(level);
+
+    if (lines.length == 1) break;
+
+    cases = Number(lines.shift());
+    slugs = lines
+      .shift()
+      .split(' ')
+      .slice(0, cases)
+      .map((item) => Number(item));
   }
 };
 
