@@ -1,4 +1,5 @@
-const fs = require('fs-extra');
+import fs from 'node:fs';
+import path from 'node:path';
 
 // const calculateIncrease = (pa, pb, ga, gb) => {
 //   let contadorAnos = 0;
@@ -99,8 +100,10 @@ const fs = require('fs-extra');
 // let tokenIndex = tokens.findIndex((item) => item == token);
 // tokens.splice(tokenIndex, 1);
 // console.log(tokens);
+const geek = {
+  book: 'sijdfsd',
+  id: 123,
+};
 
-// const validatePermission = (req, res, next) => {
-//   if (req.baseUrl == '/products') {
-//   }
-// };
+console.log(geek);
+console.dir(geek);
